@@ -1,43 +1,15 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Plus, Minus, ShoppingBag, Trash2, Loader2 } from "lucide-react";
-import { useState } from "react";
-import axios from "axios";
-import { toast } from "sonner";
+import { X, Plus, Minus, ShoppingBag, Trash2 } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { formatBRL } from "@/lib/format";
-
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+import { CHECKOUT_URL } from "@/data/checkoutLinks";
 
 export default function CartDrawer() {
-  const { items, open, setOpen, removeItem, updateQty, total, clear, count } =
+  const { items, open, setOpen, removeItem, updateQty, total, count } =
     useCart();
-  const [loading, setLoading] = useState(false);
 
-  const checkout = async () => {
-    if (items.length === 0) return;
-    setLoading(true);
-    try {
-      const res = await axios.post(`${API}/orders`, {
-        items: items.map((i) => ({
-          product_id: i.product_id,
-          name: i.name,
-          price: i.price,
-          quantity: i.quantity,
-          image: i.image,
-        })),
-      });
-      toast.success("Pedido confirmado!", {
-        description: `Pedido #${res.data.id.slice(0, 8)} · ${formatBRL(
-          res.data.total
-        )}. Enviamos os detalhes para o seu e-mail.`,
-      });
-      clear();
-      setOpen(false);
-    } catch (e) {
-      toast.error("Não foi possível finalizar o pedido. Tente novamente.");
-    } finally {
-      setLoading(false);
-    }
+  const checkout = () => {
+    window.open(CHECKOUT_URL, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -160,15 +132,16 @@ export default function CartDrawer() {
                     {formatBRL(total)}
                   </span>
                 </div>
-                <button
+                <a
+                  href={CHECKOUT_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={checkout}
-                  disabled={loading}
-                  className="w-full bg-istore-blue text-white rounded-full py-4 font-medium hover:bg-[#0077ED] transition-colors flex items-center justify-center gap-2 disabled:opacity-70"
+                  className="w-full bg-istore-blue text-white rounded-full py-4 font-medium hover:bg-[#0077ED] transition-colors flex items-center justify-center gap-2"
                   data-testid="checkout-button"
                 >
-                  {loading && <Loader2 className="animate-spin" size={18} />}
-                  {loading ? "Processando..." : "Finalizar compra"}
-                </button>
+                  Finalizar compra
+                </a>
                 <p className="text-center text-xs text-istore-muted">
                   Pagamento seguro · até 12x sem juros
                 </p>

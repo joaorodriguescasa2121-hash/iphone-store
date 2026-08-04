@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useCart } from "@/context/CartContext";
 import { formatBRL } from "@/lib/format";
-import { CHECKOUT_LINKS } from "@/data/checkoutLinks";
+import { CHECKOUT_URL } from "@/data/checkoutLinks";
 
 const badgeColor = {
   Lançamento: "bg-istore-blue text-white",
@@ -10,7 +10,7 @@ const badgeColor = {
 
 function ProductCard({ product, index }) {
   const { addItem } = useCart();
-  const checkoutUrl = CHECKOUT_LINKS[product.slug] || "#";
+  const checkoutUrl = CHECKOUT_URL;
   return (
     <motion.article
       initial={{ opacity: 0, y: 40 }}
