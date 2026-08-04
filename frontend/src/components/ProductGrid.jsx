@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useCart } from "@/context/CartContext";
 import { formatBRL } from "@/lib/format";
+import { CHECKOUT_LINKS } from "@/data/checkoutLinks";
 
 const badgeColor = {
   Lançamento: "bg-istore-blue text-white",
@@ -9,6 +10,7 @@ const badgeColor = {
 
 function ProductCard({ product, index }) {
   const { addItem } = useCart();
+  const checkoutUrl = CHECKOUT_LINKS[product.slug] || "#";
   return (
     <motion.article
       initial={{ opacity: 0, y: 40 }}
@@ -59,13 +61,16 @@ function ProductCard({ product, index }) {
         </div>
         <p className="text-xs text-istore-muted mt-1">{product.installment}</p>
 
-        <button
+        <a
+          href={checkoutUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           onClick={() => addItem(product)}
-          className="mt-6 w-full bg-istore-blue text-white rounded-full py-3.5 text-sm font-medium hover:bg-[#0077ED] transition-all duration-300 active:scale-95"
+          className="mt-6 w-full bg-istore-blue text-white rounded-full py-3.5 text-sm font-medium hover:bg-[#0077ED] transition-all duration-300 active:scale-95 text-center"
           data-testid={`buy-button-${product.slug}`}
         >
           Comprar agora
-        </button>
+        </a>
       </div>
     </motion.article>
   );
