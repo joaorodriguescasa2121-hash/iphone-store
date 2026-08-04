@@ -72,6 +72,7 @@ function ProductCard({ product, index }) {
 }
 
 export default function ProductGrid({ products }) {
+  const safeProducts = Array.isArray(products) ? products : [];
   return (
     <section id="iphones" className="relative py-24 md:py-32 px-5 md:px-8" data-testid="products-section">
       <div className="max-w-7xl mx-auto">
@@ -89,7 +90,7 @@ export default function ProductGrid({ products }) {
         </div>
 
         <div id="ofertas" className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-          {products.map((p, i) => (
+          {safeProducts.map((p, i) => (
             <ProductCard key={p.slug} product={p} index={i} />
           ))}
         </div>

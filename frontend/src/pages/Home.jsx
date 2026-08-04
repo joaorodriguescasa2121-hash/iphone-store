@@ -10,18 +10,24 @@ import FAQ from "@/components/FAQ";
 import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
+import { FALLBACK_PRODUCTS } from "@/data/fallbackProducts";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 export default function Home() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(FALLBACK_PRODUCTS);
   const productsRef = useRef(null);
 
   useEffect(() => {
     axios
       .get(`${API}/products`)
-      .then((res) => setProducts(res.data))
-      .catch((e) => console.error("Erro ao carregar produtos", e));
+      .then((res) => {
+        setProducts(Array.isArray(res.data) && res.data.length > 0 ? res.data : FALLBACK_PRODUCTS);
+      })
+      .catch((e) => {
+        console.error("Erro ao carregar produtos, usando dados de fallback", e);
+        setProducts(FALLBACK_PRODUCTS);
+      });
   }, []);
 
   const scrollToProducts = () => {
