@@ -2,15 +2,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Plus, Minus, ShoppingBag, Trash2 } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { formatBRL } from "@/lib/format";
-import { CHECKOUT_URL } from "@/data/checkoutLinks";
+import { CHECKOUT_LINKS } from "@/data/checkoutLinks";
 
 export default function CartDrawer() {
   const { items, open, setOpen, removeItem, updateQty, total, count } =
     useCart();
-
-  const checkout = () => {
-    window.open(CHECKOUT_URL, "_blank", "noopener,noreferrer");
-  };
 
   return (
     <AnimatePresence>
@@ -115,6 +111,15 @@ export default function CartDrawer() {
                           <Trash2 size={16} />
                         </button>
                       </div>
+                      <a
+                        href={CHECKOUT_LINKS[item.slug] || "#"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block mt-2 text-xs font-medium text-istore-blue hover:underline"
+                        data-testid={`cart-checkout-${item.product_id}`}
+                      >
+                        Comprar agora
+                      </a>
                     </div>
                   </div>
                 ))}
@@ -133,10 +138,9 @@ export default function CartDrawer() {
                   </span>
                 </div>
                 <a
-                  href={CHECKOUT_URL}
+                  href={CHECKOUT_LINKS[items[0]?.slug] || "#"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={checkout}
                   className="w-full bg-istore-blue text-white rounded-full py-4 font-medium hover:bg-[#0077ED] transition-colors flex items-center justify-center gap-2"
                   data-testid="checkout-button"
                 >
