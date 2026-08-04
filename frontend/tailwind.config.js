@@ -7,12 +7,23 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        display: ['Outfit', 'system-ui', 'sans-serif'],
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)'
       },
       colors: {
+        istore: {
+          bg: '#FBFBFD',
+          surface: '#FFFFFF',
+          alt: '#F5F5F7',
+          ink: '#1D1D1F',
+          muted: '#86868B',
+          blue: '#0071E3',
+        },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
