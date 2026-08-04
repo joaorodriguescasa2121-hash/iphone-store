@@ -1,0 +1,138 @@
+{
+  "brand_identity": {
+    "name": "iStore",
+    "theme": "light",
+    "concept": "Awwwards Site-of-the-Day Apple Reseller",
+    "vibe": "Ultra-clean, premium, minimalist, highly kinetic. It blends Apple's clinical white aesthetic with Awwwards-level craft—massive typography, smooth scroll, and purposeful motion.",
+    "language": "pt-BR"
+  },
+  "typography": {
+    "primary_heading_font": "Outfit",
+    "body_font": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+    "rules": {
+      "headings": "MUST use Outfit. Tightly tracked (tracking-tight to tracking-tighter), bold or extra-bold for hero sections. Never use Inter for headings.",
+      "body": "System font stack to perfectly mimic Apple's SF Pro. Clean, readable, leading-relaxed.",
+      "hierarchy": {
+        "h1": "text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tighter text-[#1D1D1F]",
+        "h2": "text-3xl md:text-5xl font-medium tracking-tight text-[#1D1D1F]",
+        "h3": "text-2xl font-medium tracking-tight",
+        "body": "text-base md:text-lg text-[#86868B]",
+        "price": "text-3xl font-bold tracking-tight text-[#1D1D1F]",
+        "badge": "text-xs font-semibold uppercase tracking-widest text-[#0071E3]"
+      }
+    }
+  },
+  "colors": {
+    "background": "#FBFBFD",
+    "surface": "#FFFFFF",
+    "surface_alt": "#F5F5F7",
+    "text_primary": "#1D1D1F",
+    "text_secondary": "#86868B",
+    "accent_blue": "#0071E3",
+    "accent_orange": "#BF4800",
+    "border": "rgba(29, 29, 31, 0.08)",
+    "rules": "Never use pure #000000. Use #1D1D1F for the deepest blacks to mimic Apple's ink. Background should be #FBFBFD, not pure white, to allow pure white cards (#FFFFFF) to pop subtly."
+  },
+  "grids_and_layouts": {
+    "spacing": "Generous Spacing Philosophy. Use 2-3x more padding than usual. Sections should have py-24 or py-32.",
+    "bento_grid": "For product showcase, use a 3-column grid (md:grid-cols-2 lg:grid-cols-3) with gap-6 or gap-8. Every pixel must align perfectly.",
+    "corners": "Extreme roundness on main cards: rounded-3xl or rounded-[2rem] with overflow-hidden."
+  },
+  "motion_and_interactions": {
+    "smooth_scroll": "MANDATORY. Install and use @studio-freight/react-lenis or lenis. Standard scrolling is forbidden.",
+    "hero_reveal": "Kinetic Hero with masked line-by-line reveal. Wrap each line of text in an overflow-hidden span, and use framer-motion to translate y from 100% to 0% with a spring or custom cubic-bezier.",
+    "parallax": "Use framer-motion useScroll and useTransform for subtle Y-axis translation on hero images and large product imagery.",
+    "hover_states": "Product cards must lift slightly (-translate-y-2) and increase shadow intensity (shadow-[0_20px_40px_rgba(0,0,0,0.08)]) on hover.",
+    "marquee": "Use a slow, elegant, editorial marquee for the Benefits Strip or Manifesto."
+  },
+  "components": {
+    "header": {
+      "layout": "Fixed top, w-full, z-50. Include a thin top announcement bar (bg-[#1D1D1F] text-white text-xs py-2). Main header is backdrop-blur-2xl bg-white/70.",
+      "elements": "Logo 'iStore' (font-bold text-xl), Desktop nav (Início, iPhones, Ofertas, Contato), Icons (Search, Cart, User)."
+    },
+    "hero": {
+      "layout": "Min-h-[90vh] flex flex-col items-center justify-center text-center px-4 relative overflow-hidden pt-20.",
+      "elements": "Large H1: 'Os melhores iPhones com os melhores preços', Subtitle: 'Ofertas exclusivas por tempo limitado', CTA Button (bg-[#0071E3] text-white rounded-full px-8 py-4), Parallax iPhone Image."
+    },
+    "product_grid": {
+      "layout": "Grid of 6 items. Cards have bg-white, rounded-3xl, p-8, border border-border.",
+      "card_elements": "Badge (Lançamento, Mais vendido, etc.), Product Image (3/4 angle, clean background, scaled up on hover), Title, Large Price, Strikethrough Old Price, Installments 'ou 12x sem juros', Apple-style blue Buy button (rounded-full).",
+      "data": [
+        {"name": "iPhone 17", "price": "R$2.499,90", "badge": "Lançamento"},
+        {"name": "iPhone 16", "price": "R$1.877,90", "badge": "Mais vendido"},
+        {"name": "iPhone 15", "price": "R$1.244,90", "badge": "Oferta"},
+        {"name": "iPhone 14", "price": "R$722,90", "badge": "Ótimo custo-benefício"},
+        {"name": "iPhone 13", "price": "R$421,90", "badge": "Promoção"},
+        {"name": "iPhone 12", "price": "R$99,90", "badge": "Liquidação"}
+      ]
+    },
+    "benefits_strip": {
+      "layout": "A slow marquee or a 4-column minimal grid with subtle dividing lines.",
+      "items": "Frete grátis, Garantia de 1 ano, Compra segura, Entrega rápida."
+    },
+    "testimonials": {
+      "layout": "Horizontal scroll or 3-column grid. Clean cards with user avatar, star rating, and short quote."
+    },
+    "faq": {
+      "layout": "Max-w-3xl mx-auto. Use shadcn Accordion.",
+      "styling": "No borders on the sides, just clean 1px bottom borders (border-border). Text should be text-[#1D1D1F]."
+    },
+    "newsletter": {
+      "layout": "Large rounded-3xl container bg-[#F5F5F7] p-12 text-center.",
+      "elements": "Input field and Submit button nested elegantly or side-by-side."
+    },
+    "footer": {
+      "layout": "Apple-style multi-column footer. bg-[#FBFBFD] text-sm text-[#86868B] border-t border-border pt-16 pb-8."
+    }
+  },
+  "image_urls": {
+    "hero_device": {
+      "url": "https://images.unsplash.com/photo-1781275370365-d97490e563d6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTJ8MHwxfHNlYXJjaHwzfHxhcHBsZSUyMGRldmljZXMlMjBtaW5pbWFsaXN0JTIwc2V0dXB8ZW58MHx8fHwxNzg1ODE4NTY5fDA&ixlib=rb-4.1.0&q=85",
+      "description": "Premium Apple device setup (MacBook, Airpods Max, iPhone) for the hero section background or parallax element."
+    },
+    "product_iphone_main": {
+      "url": "https://images.unsplash.com/photo-1740721610016-ce8577141b78?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzh8MHwxfHNlYXJjaHwxfHxsYXRlc3QlMjBpcGhvbmUlMjBpc29sYXRlZCUyMHdoaXRlJTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3ODU4MTg1Njl8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Clean, isolated white-background phone for product cards. Use this for iPhone 17 and iPhone 16."
+    },
+    "product_iphone_alt": {
+      "url": "https://images.unsplash.com/photo-1616410011236-7a42121dd981?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzh8MHwxfHNlYXJjaHw0fHxsYXRlc3QlMjBpcGhvbmUlMjBpc29sYXRlZCUyMHdoaXRlJTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3ODU4MTg1Njl8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Use as a fallback or cropped for older iPhone models in the grid."
+    },
+    "testimonial_1": {
+      "url": "https://images.unsplash.com/photo-1649258539566-c061ee4cf45a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzd8MHwxfHNlYXJjaHw0fHxoYXBweSUyMHBlcnNvbiUyMHVzaW5nJTIwc21hcnRwaG9uZSUyMGNsZWFuJTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3ODU4MTg1NzB8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Happy user 1"
+    },
+    "testimonial_2": {
+      "url": "https://images.unsplash.com/photo-1694057336527-fbc3e7c84890?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzd8MHwxfHNlYXJjaHwxfHxoYXBweSUyMHBlcnNvbiUyMHVzaW5nJTIwc21hcnRwaG9uZSUyMGNsZWFuJTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3ODU4MTg1NzB8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Happy user 2"
+    },
+    "testimonial_3": {
+      "url": "https://images.unsplash.com/photo-1680339566629-3c1360364f31?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzd8MHwxfHNlYXJjaHwyfHxoYXBweSUyMHBlcnNvbiUyMHVzaW5nJTIwc21hcnRwaG9uZSUyMGNsZWFuJTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3ODU4MTg1NzB8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Happy user 3"
+    }
+  },
+  "instructions_to_main_agent": [
+    "Install specific fonts: Import 'Outfit' from Google Fonts in the CSS/HTML.",
+    "Install animation libraries: yarn add framer-motion lucide-react @studio-freight/react-lenis",
+    "DO NOT USE INTER FOR HEADINGS. Apply 'font-sans' (which resolves to system-ui) for body, and a custom font-family 'Outfit' for all Headings (H1, H2, H3).",
+    "Hero MUST have a kinetic line-by-line reveal. Use Framer Motion's <motion.h1> with overflow-hidden and y-axis translation on child text nodes.",
+    "Implement Lenis smooth scroll globally in the layout component.",
+    "Ensure the exact Portuguese copy from the problem statement is used.",
+    "Apply data-testid to every button, link, and interactive element."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "You tend to converge toward generic, 'on distribution' outputs. In frontend design, this creates what users call the 'AI slop' aesthetic. Avoid this: make creative, distinctive frontends that surprise and delight.",
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients.",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects with backdrop filters (12-24px blur). NEVER use completely transparent backgrounds where text overlays images or scrolling content.",
+    "You MUST NOT apply universal transition (e.g., transition: all). Always add transitions for specific interactive elements.",
+    "You MUST NOT center align the app container, i.e., do not add .App { text-align: center; } in the css file.",
+    "Always use modern button styles like pill-shaped, with interaction animations & color relevant to the app style.",
+    "NEVER use AI assistant Emoji characters (🤖🧠💭💡) for icons.",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects, and entrance animations.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "All interactive and key informational elements MUST include a data-testid attribute to facilitate robust automated testing.",
+    "Use 'sonner' for toasts if applicable."
+  ]
+}
