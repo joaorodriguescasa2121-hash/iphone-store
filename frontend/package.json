@@ -64,8 +64,7 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "test": "craco test",
-    "postbuild": "react-snap"
+    "test": "craco test"
   },
   "browserslist": {
     "production": [
@@ -94,7 +93,6 @@
     "eslint-plugin-react-hooks": "5.2.0",
     "globals": "15.15.0",
     "postcss": "8.5.10",
-    "react-snap": "^1.23.0",
     "tailwindcss": "3.4.17"
   },
   "resolutions": {
@@ -142,16 +140,5 @@
     "http-proxy-middleware": "2.0.10"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
-  "homepage": "./",
-  "reactSnap": {
-    "skipThirdPartyRequests": true,
-    "inlineCss": true,
-    "crawl": true,
-    "destinationDir": "build",
-    "puppeteerArgs": [
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--disable-dev-shm-usage"
-    ]
-  }
+  "homepage": "./"
 }
