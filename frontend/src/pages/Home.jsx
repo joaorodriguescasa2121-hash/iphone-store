@@ -1,16 +1,17 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, lazy, Suspense } from "react";
 import axios from "axios";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Benefits from "@/components/Benefits";
 import ProductGrid from "@/components/ProductGrid";
-import Manifesto from "@/components/Manifesto";
-import Testimonials from "@/components/Testimonials";
-import FAQ from "@/components/FAQ";
-import Newsletter from "@/components/Newsletter";
-import Footer from "@/components/Footer";
-import CartDrawer from "@/components/CartDrawer";
 import { FALLBACK_PRODUCTS } from "@/data/fallbackProducts";
+
+const Manifesto = lazy(() => import("@/components/Manifesto"));
+const Testimonials = lazy(() => import("@/components/Testimonials"));
+const FAQ = lazy(() => import("@/components/FAQ"));
+const Newsletter = lazy(() => import("@/components/Newsletter"));
+const Footer = lazy(() => import("@/components/Footer"));
+const CartDrawer = lazy(() => import("@/components/CartDrawer"));
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
@@ -40,12 +41,14 @@ export default function Home() {
       <Hero onCta={scrollToProducts} />
       <Benefits />
       <ProductGrid products={products} />
-      <Manifesto />
-      <Testimonials />
-      <FAQ />
-      <Newsletter />
-      <Footer />
-      <CartDrawer />
+      <Suspense fallback={null}>
+        <Manifesto />
+        <Testimonials />
+        <FAQ />
+        <Newsletter />
+        <Footer />
+        <CartDrawer />
+      </Suspense>
     </main>
   );
 }

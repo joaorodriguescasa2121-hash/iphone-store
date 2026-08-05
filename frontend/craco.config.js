@@ -98,6 +98,27 @@ let webpackConfig = {
         ],
       };
 
+      // Split vendor libraries into separate chunks for better caching
+      webpackConfig.optimization = {
+        ...webpackConfig.optimization,
+        runtimeChunk: "single",
+        splitChunks: {
+          chunks: "all",
+          maxInitialRequests: Infinity,
+          cacheGroups: {
+            vendor: {
+              test: /[\\/]node_modules[\\/]/,
+              name(module) {
+                const packageName = module.context.match(
+                  /[\\/]node_modules[\\/](.*?)([\\/]|$)/
+                )?.[1];
+                return packageName ? `vendor.${packageName.replace("@", "")}` : "vendor";
+              },
+            },
+          },
+        },
+      };
+
       // Add health check plugin to webpack if enabled
       if (config.enableHealthCheck && healthPluginInstance) {
         webpackConfig.plugins.push(healthPluginInstance);

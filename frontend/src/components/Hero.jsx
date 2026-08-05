@@ -53,6 +53,8 @@ export default function Hero({ onCta }) {
         <img
           src={HERO_IMG}
           alt=""
+          fetchPriority="high"
+          decoding="async"
           className="absolute right-0 bottom-0 w-[70%] max-w-3xl object-contain opacity-[0.14] blur-[1px]"
         />
       </motion.div>
